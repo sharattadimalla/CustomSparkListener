@@ -18,10 +18,12 @@ class CustomSparkListener extends SparkListener {
   val log = LoggerFactory.getLogger("mySparkListener")
 
   override def onApplicationEnd(applicationEnd: SparkListenerApplicationEnd): Unit = {
-    log.info("***************** Aggregate metrics *****************************")
-    log.info(s" Jobs = ${jobsCompleted.toString}, Stages = ${stagesCompleted.toString}, Tasks = ${tasksCompleted.toString}")
-    log.info(s" Executor runtime = ${executorRuntime.toString}ms, Records Read = ${recordsRead.toString}, Records written = ${recordsWritten.toString}")
-    log.info("*****************************************************************")
+    log.info(s" Jobs = ${jobsCompleted.toString}, " +
+             s"Stages = ${stagesCompleted.toString}, " +
+             s"Tasks = ${tasksCompleted.toString}" +
+             s" Executor runtime = ${executorRuntime.toString}ms" +
+             s"Records Read = ${recordsRead.toString}, " +
+             s"Records written = ${recordsWritten.toString}")
 
   }
   override def onJobEnd(jobEnd: SparkListenerJobEnd): Unit = {
